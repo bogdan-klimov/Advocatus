@@ -22,19 +22,27 @@ const questionDescription = document.getElementsByClassName("privilege-descripti
 const questionItemText = document.getElementsByClassName("privilege-questions-item-text");
 const questionItemIcons = document.getElementsByClassName("icons");
 
-questionDescription[0].classList.add("visible-item");
-questionItemText[0].classList.add("color-item");
-questionItemIcons[0].classList.replace("icon-plus", "icon-minus");
+const addClass = (item, classItem) => {
+    item.classList.add(classItem);
+}
+
+const replaceClass = (item, classItem, newClassItem) => {
+    item.className = item.className.replace(classItem, newClassItem);
+}
+
+addClass(questionDescription[0], "visible-item");
+addClass(questionItemText[0], "color-item");
+replaceClass(questionItemIcons[0], "icon-plus", "icon-minus")
 
 for (let i = 0; i < questionItem.length; i++) {
     questionItem[i].addEventListener("click", () => {
         for (let j = 0; j < questionItem.length; j++) {
-            questionItemText[j].className = questionItemText[j].className.replace("color-item", "");
-            questionDescription[j].className = questionDescription[j].className.replace("visible-item", "");
-            questionItemIcons[j].className = questionItemIcons[j].className.replace("icon-minus", "icon-plus");
+            replaceClass(questionItemText[j], "color-item", "");
+            replaceClass(questionDescription[j], "visible-item", "");
+            replaceClass(questionItemIcons[j], "icon-minus", "icon-plus");
         };
-        questionDescription[i].classList.add("visible-item");
-        questionItemText[i].classList.add("color-item");
-        questionItemIcons[i].classList.replace("icon-plus", "icon-minus");
+        addClass(questionDescription[i], "visible-item");
+        addClass(questionItemText[i], "color-item")
+        replaceClass(questionItemIcons[i], "icon-plus", "icon-minus") 
     });
 };
