@@ -821,6 +821,7 @@ body {
 }
 
 ////////////////////////////////////////////////////
+
 header label {
     display: inline-block;
     width: 40px;
@@ -828,27 +829,28 @@ header label {
     border: 2px solid black;
     border-radius: 20%;
     align-self: center;
+    cursor: pointer;
     position: relative;
     @media (min-width: 850px) {
         display: none;
     }
 }
 
-.nav {
+.nav-bar {
     max-height: 0;
     position: absolute;
-    top: 5.91rem;
+    top: 4.70rem;
     background-color: white;
     width: 100%;
     right: 0;
-    display: flex;
     left: 0;
-    overflow: hidden;
+    display: block;
     transition: .5s;
+    overflow: hidden;
     @media (min-width: 850px) {
         position: static;
         display: block;
-        max-height: none;
+        max-height: fit-content;
     }
 }
 
@@ -856,12 +858,11 @@ header label {
     display: none;
 }
 
-header #check-id:checked ~ .nav {
-    display: block;
+// header #check-id:checked ~ .nav 
+
+.nav-active {
     max-height: 270px;
     border-bottom: 1px solid;
-    transition: .5s;
-    overflow: hidden;
 }
 
 .line,
@@ -877,7 +878,6 @@ header #check-id:checked ~ .nav {
     left: 50%;
     margin-left: -13px;
     border-radius: 10%;
-    transition: .5s;
 }
 
 .line::before,
@@ -894,14 +894,18 @@ header #check-id:checked ~ .nav {
     transform: translateY(5px);
 }
 
-.active-label span {
+.label-active span {
     height: 0;
 }
 
-.active-label span::after {
+.label-active span::after {
     transform: rotate(-45deg);
 }
 
-.active-label span::before {
+.label-active span::before {
     transform: rotate(45deg);
+}
+
+.scroll-stop {
+    overflow: hidden;
 }

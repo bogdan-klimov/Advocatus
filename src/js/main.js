@@ -2,6 +2,12 @@ const visibleWindow = document.getElementById("visible");
 const slider = document.getElementById("our-clients-slider");
 const sliderEl = document.getElementsByClassName("our-clients-el");
 const sliderButton = document.getElementsByClassName("our-clients-list-item");
+const navBtn = document.getElementById("check-id-label");
+const navMenu = document.getElementById("nav-bar");
+const navLinks = document.getElementsByClassName("nav-link");
+const header = document.getElementById("header");
+const topSectionHeight = document.getElementsByClassName('first-section')[0].offsetHeight;
+const privilegeContent = document.getElementsByClassName("privilege-content")[0];
 
 const addClass = (item, classItem) => {
     item.classList.add(classItem);
@@ -54,9 +60,41 @@ for (let i = 0; i < questionItem.length; i++) {
 };
 
 ////////////////////////////////////////////////////////////////
-const label = document.getElementById("check-id-label");
 
-label.addEventListener("click", () => {
-    label.classList.add("active-label");
-}); 
+navBtn.addEventListener("click", () => {
+    navBtn.classList.toggle("label-active");
+    navMenu.classList.toggle("nav-active");
+    document.body.classList.toggle('scroll-stop');
+});
+
+
+for (let link = 0; link < navLinks.length; link++) {
+    navLinks[link].addEventListener("click", () => {
+        if (navBtn.classList.contains("label-active")) {
+            replaceClass(navBtn, "label-active", "");
+            replaceClass(navMenu, "nav-active", "");
+            replaceClass(document.body, "scroll-stop", "");
+        }
+    })
+}
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY >= 250) {
+        header.style.maxHeight = '0';
+    } else {
+        header.style.maxHeight = '75px';
+    }
+
+    if (window.scrollY >= topSectionHeight + header.offsetHeight) {
+        header.style.position = 'fixed';
+        header.style.maxHeight = '75px';
+    } else {
+        header.style.position = 'absolute';
+    }
+});
+
 ////////////////////////////////////////////////////////////////////
+
+if (window.innerWidth > 1200) {
+    privilegeContent.setAttribute("id", "content")
+} 
