@@ -7,13 +7,13 @@ body {
 }
 
 .header {
-    padding: 25px 0;
-    position: fixed;
-    height: 95px;
+    padding: 15px 0;
     background-color: white;
+    position: absolute;
     width: 100%;
     z-index: 9999;
     border-bottom: 1px solid;
+    transition: .5s;
     .container {
         display: flex;
         justify-content: space-between;
@@ -58,25 +58,23 @@ ul {
     }
 } 
 
-.navigation {
+.nav {
     justify-content: flex-end;
     display: flex;
     text-align: center;
     flex-direction: column;
-    &-item {
-        a {
-            text-decoration: none;
-            font-size: 14px;
-            letter-spacing: 1px;
-            line-height: 45px;
-            color: #111111;
-            font-family: "Open Sans", sans-serif;
-            font-weight: 400;
-            text-transform: uppercase;
-            padding: 10px;
-            &:hover {
-                border-bottom: 3px solid #e8bf5d;
-            }
+    &-link {
+        text-decoration: none;
+        font-size: 14px;
+        letter-spacing: 1px;
+        line-height: 45px;
+        color: #111111;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 400;
+        text-transform: uppercase;
+        padding: 10px;
+        &:hover {
+            border-bottom: 3px solid #e8bf5d;
         }
     }
     @media (min-width: 850px) {
